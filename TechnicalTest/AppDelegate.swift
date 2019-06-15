@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
         
         statusBar.backgroundColor = UIColor(red:0.07, green:0.73, blue:0.58, alpha:1.0)
+        IQKeyboardManager.shared.enable = true
         return true
     }
 
