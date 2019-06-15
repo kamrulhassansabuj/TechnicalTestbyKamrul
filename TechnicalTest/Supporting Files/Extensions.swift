@@ -46,3 +46,15 @@ extension UIViewController {
         }
     }
 }
+//MARK : - Save and Retrive String from userdefaults
+extension UserDefaults {
+    
+    func setValue(value: String, key: String) {
+        set(value, forKey: key)
+        synchronize()
+    }
+    
+    func getValue(key: String) -> String {
+        return string(forKey: key)!
+    }
+}

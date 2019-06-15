@@ -27,6 +27,7 @@ class RegistrationViewController: UIViewController {
         
     }
     
+      //MARK : - Sign Up Button Pressed
     @IBAction func signUpButtonPressed(_ sender: UIButton) {
         if numberTf.text!.isEmpty && pinTF.text!.isEmpty && nameTF.text!.isEmpty && emailTF.text!.isEmpty{
             return
@@ -41,6 +42,20 @@ class RegistrationViewController: UIViewController {
         }
     }
     
+    //MARK : - Resend Button Pressed
+    @IBAction func resendButtonPressed(_ sender: UIButton) {
+        if numberTf.text!.isEmpty && pinTF.text!.isEmpty && nameTF.text!.isEmpty && emailTF.text!.isEmpty{
+            return
+        }else{
+            guard let number = numberTf.text, let pin = pinTF.text, let name = nameTF.text, let email = emailTF.text else {return}
+            print(number)
+            
+            let newRegistration = Registration(email: email, mobile: number, fullName: name, pinCode: pin)
+            //Calling registration
+            registration(newUser: newRegistration)
+            
+        }
+    }
     
     //MARK : Registration
     func registration(newUser : Registration) {

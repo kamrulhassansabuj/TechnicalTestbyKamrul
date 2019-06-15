@@ -9,6 +9,7 @@
 import UIKit
 import DropDown
 class LocationViewController: UIViewController {
+    let defaults = UserDefaults.standard
     //MARK: - DropDown's
     let areaDropDown = DropDown()
     let zoneDropDown = DropDown()
@@ -21,12 +22,14 @@ class LocationViewController: UIViewController {
         
     }()
     
+    //variables
+    private var selectedLocation : String?
     //Outlets
     
     @IBOutlet weak var zoneLabel: UILabel!
     @IBOutlet weak var areaLabel: UILabel!
     
-    let defaults = UserDefaults.standard
+    
     private var zoneNameArray = [String]()
     private var zoneNameArrayLocal = [String]()
     private var zoneArray : [Zone] = [Zone]()
@@ -273,6 +276,15 @@ class LocationViewController: UIViewController {
         areaDropDown.selectionAction = { [weak self] (index, item) in
             self?.areaLabel.text = item
             self?.areaSelected = true
+            guard let zone = self?.zoneLabel.text, let area = self?.areaLabel.text else {
+                return
+            }
+            self?.selectedLocation =  "\(zone),\(area)"
+            guard let location = self?.selectedLocation else {
+                return
+            }
+            self?.defaults.setValue(value: location ?? "", key: "location")
+            
         }
         areaDropDown.cancelAction = { [unowned self] in
             print("Drop down dismissed")
@@ -282,4 +294,16 @@ class LocationViewController: UIViewController {
             print("Drop down will show")
         }
     }
+    
+//
+//    //MARK : Prepare Segue for Registration Page
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if(segue.identifier == "goToHomePage") {
+//            let destinationVC = segue.destination as! HomeViewController
+//            destinationVC.getLocation = selectedLocation
+//        }
+//
+//    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fCv-aP-VaS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bHq-L9-eWE">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -257,6 +257,9 @@
                                                                                         <color key="value" red="0.70196078429999997" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
+                                                                                <connections>
+                                                                                    <action selector="resendButtonPressed:" destination="LbC-6K-V95" eventType="touchUpInside" id="0yS-LD-XQo"/>
+                                                                                </connections>
                                                                             </button>
                                                                         </subviews>
                                                                         <constraints>
@@ -323,11 +326,12 @@
                         <outlet property="resendButton" destination="bQ1-0L-7i5" id="CsG-aD-POU"/>
                         <outlet property="resendStackView" destination="9GO-yg-qJd" id="kx4-N7-wYV"/>
                         <segue destination="k08-Nl-aX8" kind="show" identifier="goToSignUpPage" id="y3f-33-cns"/>
+                        <segue destination="fCv-aP-VaS" kind="show" identifier="goToLocationPageFromLogin" id="hw6-Va-1i2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgf-JV-rHV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1760.8695652173915" y="-891.29464285714278"/>
+            <point key="canvasLocation" x="-1891" y="-901"/>
         </scene>
         <!--Registration View Controller-->
         <scene sceneID="NOZ-vv-vfa">
@@ -578,6 +582,7 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                                 <connections>
+                                                                                    <action selector="resendButtonPressed:" destination="k08-Nl-aX8" eventType="touchUpInside" id="aN8-6N-TnD"/>
                                                                                     <action selector="signUpButtonPressed:" destination="k08-Nl-aX8" eventType="touchUpInside" id="fty-oL-Ra1"/>
                                                                                 </connections>
                                                                             </button>
@@ -732,10 +737,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuN-R2-FPP">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BRI-7C-9vn">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5Tp-2l-k55">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="690"/>
@@ -1053,10 +1058,55 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="774"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ve4-Al-8ov">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="310"/>
                                                 <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glm-fk-4BV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="y6j-7s-wMc">
+                                                                <rect key="frame" x="30" y="0.0" width="354" height="60"/>
+                                                                <subviews>
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fx0-rV-Zbl">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
+                                                                        <subviews>
+                                                                            <searchBar contentMode="redraw" placeholder="What you are looking for?" translatesAutoresizingMaskIntoConstraints="NO" id="qzl-97-TXl">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="354" height="60"/>
+                                                                                <textInputTraits key="textInputTraits"/>
+                                                                            </searchBar>
+                                                                        </subviews>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstItem="qzl-97-TXl" firstAttribute="top" secondItem="fx0-rV-Zbl" secondAttribute="top" id="71Y-im-Cd8"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="qzl-97-TXl" secondAttribute="trailing" id="XB4-uK-qav"/>
+                                                                            <constraint firstItem="qzl-97-TXl" firstAttribute="leading" secondItem="fx0-rV-Zbl" secondAttribute="leading" id="bKP-NP-Qf8"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="qzl-97-TXl" secondAttribute="bottom" id="sQg-X3-a5y"/>
+                                                                            <constraint firstAttribute="height" constant="60" id="wcA-Nt-BWe"/>
+                                                                        </constraints>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRedius">
+                                                                                <real key="value" value="0.0"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                                                <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </view>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="7qw-dF-l1R"/>
+                                                            <constraint firstItem="y6j-7s-wMc" firstAttribute="top" secondItem="glm-fk-4BV" secondAttribute="top" id="KkT-bA-4FR"/>
+                                                            <constraint firstAttribute="trailing" secondItem="y6j-7s-wMc" secondAttribute="trailing" constant="30" id="T35-7K-Kus"/>
+                                                            <constraint firstAttribute="bottom" secondItem="y6j-7s-wMc" secondAttribute="bottom" id="Z2w-jX-uw0"/>
+                                                            <constraint firstItem="y6j-7s-wMc" firstAttribute="leading" secondItem="glm-fk-4BV" secondAttribute="leading" constant="30" id="svw-hG-kev"/>
+                                                        </constraints>
+                                                    </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xd9-31-4Ai">
-                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
+                                                        <rect key="frame" x="0.0" y="70" width="414" height="240"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L38-HV-e5b">
                                                                 <rect key="frame" x="57" y="20" width="300" height="200"/>
@@ -1116,6 +1166,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Home" id="Bit-8z-def">
                         <barButtonItem key="backBarButtonItem" title="Back" id="33S-5b-VXO"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="path_57" id="juu-XX-kmB"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8v-v1-ufa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1284,5 +1335,7 @@
         <image name="iv_login" width="248" height="167.5"/>
         <image name="locaton_bottom_image" width="360" height="229"/>
         <image name="meena_click_logo_with_border" width="280" height="101"/>
+        <image name="path_57" width="22" height="24"/>
     </resources>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

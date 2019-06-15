@@ -59,6 +59,31 @@ class SignInViewController: UIViewController {
         
         }
     
+    @IBAction func resendButtonPressed(_ sender: UIButton) {
+        if phoneNumberTF.text!.isEmpty{
+            return
+        }else{
+            guard let number = phoneNumberTF.text else {return}
+            guard let code = pinCodeTf.text else {return}
+            print(number)
+            print(code)
+            selectedNumber = number
+            if isExists{
+                if pinCodeTf.text!.isEmpty{
+                    return
+                }else{
+                    login(number: number, pin: code)
+                }
+                
+            }else{
+                loginCheck(number: number)
+            }
+            
+        }
+    }
+    
+    
+    
     //MARK : Login Check Function
     func loginCheck(number : String) {
         let jsonURLString = "https://meenaclick.com/api/v2/login-check"
@@ -155,8 +180,17 @@ class SignInViewController: UIViewController {
                     
                     let checkLogin = try JSONSerialization.jsonObject(with: data) as? NSDictionary
                     print(checkLogin)
-//                    let loginData = (checkLogin as AnyObject).value(forKey: "login_data") as? NSObject
-//                    //                self.statusMessege = status
+                    let status = (checkLogin as AnyObject).value(forKey: "status") as? String
+                    
+                    if status == "success"{
+                        DispatchQueue.main.async {
+                            self.performSegue(withIdentifier: "goToLocationPageFromLogin", sender: self)
+                        }
+                        //
+                    }else{
+                        self.customAlert(title: "Error", message: error?.localizedDescription ?? "Error in login", time: 3)
+                    }
+                    //                self.statusMessege = status
 //                    print("loginData : \(loginData)")
 //                    let accountExists = loginData!.value(forKey: "account_exists") as? Bool
 //                    print(accountExists)
