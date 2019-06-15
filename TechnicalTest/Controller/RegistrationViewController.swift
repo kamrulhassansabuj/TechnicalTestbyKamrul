@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  RegistrationViewController.swift
 //  TechnicalTest
 //
 //  Created by Interview AITS on 15/6/19.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
 
+        
+    }
+    
 
 }
-
