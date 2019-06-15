@@ -687,6 +687,12 @@
                     <navigationItem key="navigationItem" title="Welcome" id="Kno-ft-8MJ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="SNA-L0-Kzq"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailTF" destination="711-i8-fxD" id="iMf-89-GUc"/>
+                        <outlet property="nameTF" destination="ORE-sN-KQU" id="RaY-bo-Ohw"/>
+                        <outlet property="numberTf" destination="uia-Vq-1dL" id="S4L-r8-bdY"/>
+                        <outlet property="pinTF" destination="8nG-Do-TG7" id="uBC-oi-C3J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ciw-JJ-cFQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

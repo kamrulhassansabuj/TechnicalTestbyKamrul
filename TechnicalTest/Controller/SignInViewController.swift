@@ -10,9 +10,14 @@ import UIKit
 
 class SignInViewController: UIViewController {
 
+    //IBOutlets
     @IBOutlet weak var resendButton: UIButton!
     @IBOutlet weak var phoneNumberTF: UITextField!
     @IBOutlet weak var pinCodeTf: UITextField!
+    
+    //variables
+    var selectedNumber : String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +32,13 @@ class SignInViewController: UIViewController {
         }else{
             guard let number = phoneNumberTF.text else {return}
             print(number)
+            selectedNumber = number
             loginCheck(number: number)
         }
         
         }
     
-    
+    //MARK : Login Check Function
     func loginCheck(number : String) {
         let jsonURLString = "https://meenaclick.com/api/v2/login-check"
         
@@ -89,5 +95,16 @@ class SignInViewController: UIViewController {
         task.resume()
     }
 
+    
+    //MARK : Prepare Segue for Registration Page
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "goToSignUpPage") {
+            let destinationVC = segue.destination as! RegistrationViewController
+            destinationVC.getNumber = selectedNumber
+        }
+        
+    }
 }
 
